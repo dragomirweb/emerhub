@@ -20,7 +20,8 @@ export default class extends Vue {}
 <style lang="scss">
 .app-navigation {
   @apply w-full;
-  @apply bg-gray-400;
+  @apply bg-blue-700;
+  @apply text-white;
 }
 
 .navbar {
