@@ -12,6 +12,7 @@
     "firebase": "^7.17.2",
     "lodah": "^0.0.1-security",
     "rxjs": "^6.6.2",
+    "tailwindcss": "^1.6.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.5",
     "vue-property-decorator": "^8.4.2",
@@ -52,16 +53,68 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {
+      "no-string-literal": false,
+      "member-access": false,
+      "member-ordering": false,
+      "curly": 0,
+      "arrow-parens": 0,
+      "trailing-comma": false,
+      "no-trailing-whitespace": false,
+      "only-arrow-functions": false,
+      "semicolon": false,
+      "import-spacing": false,
+      "quotemark": [
+        false,
+        "single"
+      ],
+      "indent": [
+        true,
+        "spaces",
+        2
+      ],
+      "interface-name": false,
+      "ordered-imports": false,
+      "object-literal-sort-keys": false,
+      "no-console": 0,
+      "object-literal-key-quotes": false,
+      "no-consecutive-blank-lines": false,
+      "variable-name": [
+        true,
+        "ban-keywords",
+        "allow-snake-case",
+        "allow-pascal-case",
+        "check-format",
+        "allow-leading-underscore"
+      ],
+      "callable-types": false,
+      "one-line": false,
+      "object-literal-shorthand": false,
+      "array-type": false,
+      "align": [
+        true
+      ],
+      "triple-equals": 0,
+      "typedef-whitespace": 0,
+      "whitespace": 0,
+      "space-before-function-paren": 0,
+      "no-var-keyword": 0,
+      "ban-types": 0,
+      "max-line-length": 0,
+      "no-unused-expression": 0,
+      "no-empty": 0,
+      "no-var-requires": 0,
+      "no-angle-bracket-type-assertion": 0,
+      "comment-format": 0,
+      "max-classes-per-file": 0,
+      "radix": 0
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
   ],
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
       "vue-cli-service lint",
