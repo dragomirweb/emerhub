@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav> test</nav>
+    <Navigation />
     <router-view />
   </div>
 </template>
@@ -9,8 +9,15 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-@Component({ name: 'BasicLayout', components: {} })
+import Navigation from '@/components/Navigation.vue'
+
+@Component({
+  name: 'BasicLayout',
+  components: {
+    Navigation,
+  },
+})
 export default class extends Vue {}
 </script>
 
-<style></style>
+<style lang="scss"></style>
