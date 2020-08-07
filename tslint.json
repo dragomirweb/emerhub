@@ -1,0 +1,51 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  },
+  "rules": {
+    "no-string-literal": false,
+    "member-access": false,
+    "member-ordering": false,
+    "curly": false,
+    "arrow-parens": false,
+    "trailing-comma": false,
+    "no-trailing-whitespace": false,
+    "only-arrow-functions": false,
+    "semicolon": false,
+    "import-spacing": false,
+    "quotemark": [false, "single"],
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-console": false,
+    "object-literal-key-quotes": false,
+    "no-consecutive-blank-lines": false,
+    "variable-name": [true, "ban-keywords", "allow-snake-case", "allow-pascal-case", "check-format", "allow-leading-underscore"],
+    "callable-types": false,
+    "one-line": false,
+    "object-literal-shorthand": false,
+    "array-type": false,
+    "align": [true],
+    "triple-equals": false,
+    "typedef-whitespace": false,
+    "whitespace": false,
+    "space-before-function-paren": false,
+    "no-var-keyword": false,
+    "ban-types": false,
+    "max-line-length": false,
+    "no-unused-expression": false,
+    "no-empty": false,
+    "no-var-requires": false,
+    "no-angle-bracket-type-assertion": false,
+    "comment-format": false,
+    "max-classes-per-file": false,
+    "radix": false
+  }
+}
