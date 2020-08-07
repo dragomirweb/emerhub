@@ -1,5 +1,5 @@
 <template>
-  <component class="text-black" :is="pageLayout" :key="pageLayout" />
+  <component class="app text-black" :is="pageLayout" :key="pageLayout" />
 </template>
 
 <script lang="ts">
@@ -20,3 +20,10 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.app {
+  min-height: 100vh;
+}
+
+</style>

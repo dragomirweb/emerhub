@@ -1,7 +1,9 @@
 <template>
   <div>
     <Navigation />
-    <router-view />
+    <div class="app-wrapper flex">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -20,4 +22,8 @@ import Navigation from '@/components/Navigation.vue'
 export default class extends Vue {}
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.app-wrapper {
+  min-height: calc(100vh - 80px);
+}
+</style>

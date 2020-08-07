@@ -3,10 +3,7 @@
     <div class="container mx-auto navbar flex items-center justify-between">
       <div class="logo">Logo</div>
       <div class="menu">
-        <span class="mx-3 ml-0 cursor-pointer"> Item 1 </span>
-        <span class="mx-3 cursor-pointer"> Item 2 </span>
-        <span class="mx-3 cursor-pointer"> Item 3 </span>
-        <span class="mx-3 mr-0 cursor-pointer"> Item 4 </span>
+        <router-link to="/" class="mx-3 ml-0 cursor-pointer"> SyncForm </router-link>
       </div>
     </div>
   </nav>
