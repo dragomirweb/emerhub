@@ -1,13 +1,13 @@
 <template>
   <div class="flex flex-col items-center mt-8">
     <div class="w-2/3 mb-5">
-      <h3 class="text-left">Progress</h3>
+      <h3 class="text-left">Let's get to know each other!</h3>
       <div
         :class="
           `flex justify-between my-2 ${progress > 0 ? 'visible' : 'invisible'}`
         "
       >
-        <span class="text-xs">{{progress}}%</span>
+        <span class="text-xs">{{ progress }}%</span>
       </div>
       <div
         :style="{ width: `${progress}%` }"
@@ -15,7 +15,8 @@
       ></div>
     </div>
     <form
-      @change="test"
+      @keyup="(evt) => onFormChanged(evt)"
+      @submit="onFormSubmit"
       class="w-2/3 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
     >
       <div class="mb-4">
@@ -99,7 +100,7 @@
       <div class="flex items-center justify-between mt-5">
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
+          type="submit"
         >
           Send answers
         </button>
@@ -109,8 +110,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { mapValues as _mapValues } from 'lodash'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import {
+  mapValues as _mapValues,
+  delay as _delay,
+  values as _values,
+} from 'lodash'
+import { firestore, functions } from '../database/db'
 
 interface Questionaire {
   question1: string | null
@@ -123,13 +129,18 @@ interface Questionaire {
 @Component
 export default class extends Vue {
   questionaire: Questionaire = {
-    question1: null,
-    question2: null,
-    question3: null,
-    question4: null,
-    question5: null,
+    question1: '',
+    question2: '',
+    question3: '',
+    question4: '',
+    question5: '',
   }
-  mounted() {
+
+  get userQuestions() {
+    if (!this.$store.state.user) {
+      return {}
+    }
+    return this.$store.state.user
   }
 
   get progress() {
@@ -140,8 +151,38 @@ export default class extends Vue {
     return progress
   }
 
-  test(val: any) {
-    console.log(this.progress)
+  // get progressfromfirebase() {
+  //   return fetch('http://localhost:5001/emerhub-ff861/us-central1/progress', {
+  //     method: 'POST',
+  //     mode: 'no-cors',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({data: _values(this.questionaire)})
+  //   })
+  // }
+
+  mounted() {
+    _delay(() => (this.questionaire = this.$store.state.user), 1000)
+  }
+
+  onFormChanged(event: any) {
+    const newData = {
+      ...this.questionaire,
+      [event.target.name]: event.target.value,
+    }
+    this.$store.dispatch('updateUser', {
+      data: newData,
+      user: this.$store.state.user.id,
+    })
+  }
+
+  onFormSubmit() {
+    console.log('sd')
+    this.$store.dispatch('updateUser', {
+      data: this.userQuestions,
+      user: this.$store.state.user.id,
+    })
   }
 }
 </script>
