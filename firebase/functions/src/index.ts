@@ -1,9 +1,12 @@
-import * as functions from 'firebase-functions';
+import * as functions from 'firebase-functions'
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
-});
+export const progress = functions.https.onRequest((request, res) => {
+  let data = 0
+  const req = JSON.parse(request.body)
+
+  req.data.map((o: string | any[]) => {
+    if (o && o.length > 0) data = data + 20
+  })
+
+  res.sendStatus(200).send(JSON.stringify(data))
+})
